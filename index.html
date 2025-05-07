@@ -2,13 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PNC Online Banking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+    }
+
+    /* Blurred Background */
+    .background {
+      background-image: url('https://www.pnc.com/content/dam/pnc-com/images/homepage-tiles/pnc-hp-hero-mobile.png');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      filter: blur(6px);
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+
+    /* Main container over blurred background */
+    .main-container {
+      position: relative;
+      z-index: 1;
     }
 
     /* Top Utility Bar */
@@ -29,7 +46,7 @@
       text-decoration: underline;
     }
 
-    /* Main Navigation */
+    /* Navigation Bar */
     .nav-bar {
       background-color: #38424b;
       display: flex;
@@ -57,7 +74,7 @@
       margin-left: auto;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
     }
     .nav-right input {
       padding: 5px;
@@ -75,31 +92,21 @@
       align-items: center;
     }
 
-    /* Background Hero */
-    .background-section {
-      background-image: url('https://www.bizjournals.com/pittsburgh/news/2018/10/22/pnc-to-roll-out-digital-business-lending-platform.html');
-      background-size: cover;
-      background-position: center;
-      height: 300px;
-      position: relative;
-    }
-
-    /* Sign-on Dropdown */
+    /* Sign-on Box */
     .signon-container {
-      max-width: 900px;
+      max-width: 950px;
       background-color: white;
-      margin: -80px auto 30px;
+      margin: 30px auto;
       padding: 30px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       border-top: 4px solid #f58025;
       position: relative;
     }
-
     .signon-container::before {
       content: "";
       position: absolute;
       top: -20px;
-      right: 100px;
+      right: 120px;
       border-width: 10px;
       border-style: solid;
       border-color: transparent transparent white transparent;
@@ -124,22 +131,22 @@
       display: block;
       font-size: 14px;
       margin-bottom: 5px;
-      font-weight: normal;
     }
     input[type="text"],
     input[type="password"] {
-      width: 100%;
+      width: 40%;
       padding: 10px;
       font-size: 14px;
       border: 1px solid #ccc;
       margin-bottom: 15px;
+      margin-right: 20px;
       box-sizing: border-box;
     }
     .remember {
       display: flex;
       align-items: center;
-      margin-bottom: 15px;
       font-size: 14px;
+      margin-bottom: 15px;
     }
     .remember input {
       margin-right: 5px;
@@ -148,18 +155,13 @@
       background-color: #e6e7e8;
       color: #333;
       border: none;
-      width: 100%;
-      padding: 10px;
+      padding: 10px 20px;
       font-size: 14px;
       cursor: pointer;
-      margin-bottom: 15px;
+      margin-left: 20px;
     }
     .signon-button:hover {
       background-color: #d6d7d8;
-    }
-    .divider {
-      border-top: 1px solid #ccc;
-      margin: 15px 0;
     }
     .links-row {
       display: flex;
@@ -167,68 +169,70 @@
       font-size: 14px;
     }
 
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
+    @media (max-width: 900px) {
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        margin-right: 0;
       }
-      .background-section {
-        height: 200px;
+      .signon-button {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="background"></div>
 
-  <!-- Top bar -->
-  <div class="top-bar">
-    <a href="#">Español</a>
-    <a href="#">Customer Service</a>
-    <a href="#">Locations</a>
-    <a href="#">Security</a>
+  <div class="main-container">
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <a href="#">Español</a>
+      <a href="#">Customer Service</a>
+      <a href="#">Locations</a>
+      <a href="#">Security</a>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-bar">
+      <img src="pnc.png" alt="PNC Logo">
+      <div class="nav-links">
+        <div>PERSONAL</div>
+        <div>SMALL BUSINESS</div>
+        <div>CORPORATE & INSTITUTIONAL</div>
+        <div>ABOUT</div>
+      </div>
+      <div class="nav-right">
+        <input type="text" placeholder="SEARCH">
+        <button>🔍 SIGN ON</button>
+      </div>
+    </div>
+
+    <!-- Sign On Box -->
+    <div class="signon-container">
+      <h2>Sign On to <span class="bold">Online Banking</span> or 
+        <a href="#" class="blue-link">select another service ⌄</a>
+      </h2>
+
+      <form>
+        <input type="text" placeholder="Enter User ID" required>
+        <input type="password" placeholder="Enter Password" required>
+        <button class="signon-button" type="submit">Sign On</button>
+
+        <div class="remember">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember User ID</label>
+        </div>
+
+        <div class="links-row">
+          <a href="#" class="blue-link">Forgot ID or Password?</a>
+          <a href="#" class="blue-link">Enroll In Online Banking</a>
+        </div>
+      </form>
+    </div>
   </div>
-
-  <!-- Navigation bar -->
-  <div class="nav-bar">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/PNC_Bank_logo.svg" alt="PNC Logo">
-    <div class="nav-links">
-      <div>PERSONAL</div>
-      <div>SMALL BUSINESS</div>
-      <div>CORPORATE & INSTITUTIONAL</div>
-      <div>ABOUT</div>
-    </div>
-    <div class="nav-right">
-      <input type="text" placeholder="SEARCH">
-      <button>SIGN ON</button>
-    </div>
-  </div>
-
-  <!-- Background section -->
-  <div class="background-section"></div>
-
-  <!-- Sign-on dropdown -->
-  <div class="signon-container">
-    <h2>Sign On to <span class="bold">Online Banking</span> or 
-      <a href="#" class="blue-link">select another service</a>
-    </h2>
-
-    <label for="user-id">User ID (required)</label>
-    <input type="text" id="user-id" placeholder="Enter User ID">
-
-    <label for="password">Password (required)</label>
-    <input type="password" id="password" placeholder="Enter Password">
-
-    <div class="remember">
-      <input type="checkbox" id="remember">
-      <label for="remember">Remember User ID</label>
-    </div>
-
-    <button class="signon-button">Sign On</button>
-
-    <div class="links-row">
-      <a href="#" class="blue-link">Forgot ID or Password?</a>
-      <a href="#" class="blue-link">Enroll In Online Banking</a>
-    </div>
-  </div>
-
 </body>
 </html>
