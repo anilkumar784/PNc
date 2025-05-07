@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PNC Online Banking Sign On</title>
+  <title>PNC Online Banking</title>
   <style>
     body {
       margin: 0;
@@ -11,44 +11,47 @@
       background-color: #f5f5f5;
     }
 
-    /* Top Header Bar */
-    .top-header {
+    /* Top Utility Bar */
+    .top-bar {
       background-color: #2f3b45;
       color: white;
-      font-size: 14px;
+      font-size: 12px;
       padding: 8px 20px;
       display: flex;
       justify-content: flex-end;
     }
-    .top-header a {
+    .top-bar a {
       color: white;
-      margin-left: 15px;
       text-decoration: none;
+      margin-left: 15px;
     }
-    .top-header a:hover {
+    .top-bar a:hover {
       text-decoration: underline;
     }
 
-    /* Main Nav Bar */
+    /* Main Navigation */
     .nav-bar {
       background-color: #38424b;
-      color: white;
       display: flex;
       align-items: center;
       padding: 10px 20px;
     }
     .nav-bar img {
       height: 30px;
-      margin-right: 20px;
+      margin-right: 30px;
     }
     .nav-links {
       display: flex;
-      gap: 20px;
-      font-weight: bold;
+      gap: 25px;
       font-size: 14px;
+      font-weight: bold;
+      color: white;
     }
     .nav-links div {
       cursor: pointer;
+    }
+    .nav-links div:hover {
+      text-decoration: underline;
     }
     .nav-right {
       margin-left: auto;
@@ -56,41 +59,50 @@
       align-items: center;
       gap: 15px;
     }
-    .search-input {
+    .nav-right input {
       padding: 5px;
       font-size: 14px;
     }
-    .signon-btn {
-      background-color: #fff;
+    .nav-right button {
+      background-color: white;
       color: #333;
       border: none;
-      padding: 5px 10px;
-      cursor: pointer;
+      padding: 6px 12px;
       font-size: 14px;
+      cursor: pointer;
       border-radius: 4px;
       display: flex;
       align-items: center;
     }
 
-    /* Background Section */
+    /* Background Hero */
     .background-section {
-      background-image: pnc.png;
+      background-image: url('https://www.pnc.com/content/dam/pnc-com/images/homepage-tiles/pnc-hp-hero-mobile.png');
       background-size: cover;
       background-position: center;
-      height: 250px;
+      height: 300px;
       position: relative;
     }
 
-    /* Sign-On Container */
-    .container {
-      max-width: 700px;
+    /* Sign-on Dropdown */
+    .signon-container {
+      max-width: 900px;
       background-color: white;
-      margin: -60px auto 30px;
+      margin: -80px auto 30px;
       padding: 30px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       border-top: 4px solid #f58025;
-      z-index: 10;
       position: relative;
+    }
+
+    .signon-container::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: 100px;
+      border-width: 10px;
+      border-style: solid;
+      border-color: transparent transparent white transparent;
     }
 
     h2 {
@@ -110,16 +122,18 @@
     }
     label {
       display: block;
-      margin-bottom: 5px;
       font-size: 14px;
+      margin-bottom: 5px;
+      font-weight: normal;
     }
     input[type="text"],
     input[type="password"] {
       width: 100%;
       padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
       font-size: 14px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      box-sizing: border-box;
     }
     .remember {
       display: flex;
@@ -133,39 +147,49 @@
     .signon-button {
       background-color: #e6e7e8;
       color: #333;
-      padding: 10px;
       border: none;
-      cursor: pointer;
-      font-size: 14px;
       width: 100%;
-      margin-bottom: 10px;
-    }
-    .or {
-      text-align: center;
-      margin: 10px 0;
+      padding: 10px;
       font-size: 14px;
-      color: #333;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+    .signon-button:hover {
+      background-color: #d6d7d8;
+    }
+    .divider {
+      border-top: 1px solid #ccc;
+      margin: 15px 0;
     }
     .links-row {
       display: flex;
       justify-content: space-between;
       font-size: 14px;
     }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .background-section {
+        height: 200px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top header -->
-  <div class="top-header">
+  <!-- Top bar -->
+  <div class="top-bar">
     <a href="#">Español</a>
     <a href="#">Customer Service</a>
     <a href="#">Locations</a>
     <a href="#">Security</a>
   </div>
 
-  <!-- Main navbar -->
+  <!-- Navigation bar -->
   <div class="nav-bar">
-    <img src="pnc.png" alt="PNC Logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/PNC_Bank_logo.svg" alt="PNC Logo">
     <div class="nav-links">
       <div>PERSONAL</div>
       <div>SMALL BUSINESS</div>
@@ -173,16 +197,16 @@
       <div>ABOUT</div>
     </div>
     <div class="nav-right">
-      <input type="text" class="search-input" placeholder="SEARCH">
-      <button class="signon-btn">SIGN ON</button>
+      <input type="text" placeholder="SEARCH">
+      <button>SIGN ON</button>
     </div>
   </div>
 
-  <!-- Background image section -->
+  <!-- Background section -->
   <div class="background-section"></div>
 
-  <!-- Sign-On Form -->
-  <div class="container">
+  <!-- Sign-on dropdown -->
+  <div class="signon-container">
     <h2>Sign On to <span class="bold">Online Banking</span> or 
       <a href="#" class="blue-link">select another service</a>
     </h2>
